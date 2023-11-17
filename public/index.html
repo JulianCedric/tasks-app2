@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous"/>
+  </head>
+  <body>
+    <div class='container-fluid' style="margin-top: 2rem">
+      <!--  -->
+      <div class='row'>
+        <div class='col-md-offset-4 col-md-4 well'>
+          <h2 class='text-center'>Tasks</h2>
+          <form id='new-task-form'>
+            <div class='form-group'>
+              <input class='form-control' id='new-task' placeholder='New task' required>
+            </div>
+            <div class='form-group'>
+              <button class='btn btn-block btn-primary' id='submit-btn' type='submit'>Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!--  -->
+      <div class='row'>
+        <div class="col-md-offset-4 col-md-4 well">
+          <h4>Unsorted:</h4>
+          <div class="'well">
+            <ol id="unsorted-tasks-ol"></ol>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <div class="row">
+        <div class='col-md-offset-4 col-md-4 well'>
+          <h4>Sorted:</h4>
+          <div class="'well">
+            <ol id="sorted-tasks-ol"></ol>
+          </div>
+        </div>
+      </div>
+    <script>
+      let tasks = [];
+
+      document.getElementById('new-task-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        let newTask = document.getElementById('new-task').value;
+        let unsortedTasksOl = document.getElementById('unsorted-tasks-ol');
+        let newTaskLi = document.createElement('li');
+        let newObj = { id: tasks.length, desc: newTask };
+        
+        tasks.push(newObj); 
+
+        newTaskLi.innerText = newTask;
+        unsortedTasksOl.appendChild(newTaskLi);
+
+        document.getElementById('new-task').value = '';
+        document.getElementById('new-task').focus();
+
+        console.log('success');
+      });
+    </script>
+  </body>
+</html>
